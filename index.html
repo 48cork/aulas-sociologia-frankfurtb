@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola de Frankfurt - Sociologia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .material {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 5px 5px 0 0;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .note {
+            background: #fffde7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #f1c40f;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 15px; }
+            .btn { display: block; width: 100%; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Escola de Frankfurt</h1>
+        <p class="subtitle">Materiais de Introdução à Sociologia</p>
+        
+        <div class="note">
+            📱 <strong>Otimizado para celular</strong> - Todos os PDFs abrem direto no navegador
+        </div>
+        
+        <div class="material">
+            <h3>📄 Introdução à Escola de Frankfurt</h3>
+            <p>Contexto histórico e conceitos fundamentais.</p>
+            <a href="escola_frankfurt.pdf" class="btn" target="_blank">Abrir PDF</a>
+            <a href="escola_frankfurt.pdf" class="btn" download>Download</a>
+        </div>
+        
+        <div class="material">
+            <h3>📄 Autoritarismo e Teoria Crítica</h3>
+            <p>Análise do autoritarismo na perspectiva frankfurtiana.</p>
+            <a href="autoritarismo_escola_frankfurt.pdf" class="btn" target="_blank">Abrir PDF</a>
+            <a href="autoritarismo_escola_frankfurt.pdf" class="btn" download>Download</a>
+        </div>
+        
+        <div class="material">
+            <h3>📘 Guia Pedagógico</h3>
+            <p>Orientações didáticas e atividades.</p>
+            <a href="guia_pedagogico_escola_frankfurt.pdf" class="btn" target="_blank">PDF</a>
+            <a href="guia_pedagogico_escola_frankfurt.docx" class="btn" download>Word</a>
+        </div>
+        
+        <div class="note">
+            💡 <strong>Dica:</strong> Salve esta página nos favoritos do celular para acesso rápido.
+        </div>
+        
+        <p style="text-align: center; color: #95a5a6; margin-top: 40px;">
+            Disponibilizado pelo professor • Atualizado em <span id="date"></span>
+        </p>
+    </div>
+    
+    <script>
+        document.getElementById('date').textContent = 
+            new Date().toLocaleDateString('pt-BR');
+    </script>
+</body>
+</html>
