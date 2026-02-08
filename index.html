@@ -3,108 +3,541 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escola de Frankfurt - Sociologia</title>
+    <title>Conceitos Fundamentais - Escola de Frankfurt</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f2f5;
+        * {
             margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            --primary: #8B0000;
+            --primary-dark: #5a0000;
+            --secondary: #2c3e50;
+            --accent: #d4af37;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --dark: #343a40;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%23ffffff10"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+
         h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 10px;
+            font-family: 'Crimson Pro', 'Times New Roman', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease;
         }
+
         .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
-        .material {
-            background: #f8f9fa;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-        }
-        .btn {
+
+        .back-btn {
             display: inline-block;
-            padding: 12px 20px;
-            margin: 5px 5px 0 0;
-            background: #3498db;
-            color: white;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+            font-weight: 600;
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease 0.4s both;
+            border: 2px solid transparent;
         }
-        .btn:hover {
-            background: #2980b9;
+
+        .back-btn:hover {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
-        .note {
-            background: #fffde7;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            border-left: 4px solid #f1c40f;
+
+        /* Introduction */
+        .intro {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-width: 1000px;
+            border-left: 5px solid var(--primary);
         }
-        @media (max-width: 600px) {
-            .container { padding: 15px; }
-            .btn { display: block; width: 100%; margin: 10px 0; }
+
+        .intro h2 {
+            color: var(--primary);
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .intro h2::before {
+            content: '📚';
+            font-size: 1.8rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(139, 0, 0, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .highlight strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Debate Section */
+        .debate {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            border-radius: 20px;
+        }
+
+        .debate h2 {
+            text-align: center;
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--accent);
+        }
+
+        .questions {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .question {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .question:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .question h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .intro {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .debate {
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .back-btn, .footer-links {
+                display: none;
+            }
+            
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎓 Escola de Frankfurt</h1>
-        <p class="subtitle">Materiais de Introdução à Sociologia</p>
-        
-        <div class="note">
-            📱 <strong>Otimizado para celular</strong> - Todos os PDFs abrem direto no navegador
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Conceitos Fundamentais</h1>
+                <p class="subtitle">Uma análise profunda das principais contribuições da Escola de Frankfurt para a teoria crítica e a compreensão da sociedade moderna</p>
+                <a href="https://48cork.github.io/aulas-sociologia-frankfurtb/" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Voltar para a Página Principal
+                </a>
+            </div>
         </div>
-        
-        <div class="material">
-            <h3>📄 Introdução à Escola de Frankfurt</h3>
-            <p>Contexto histórico e conceitos fundamentais.</p>
-            <a href="escola_frankfurt.pdf" class="btn" target="_blank">Abrir PDF</a>
-            <a href="escola_frankfurt.pdf" class="btn" download>Download</a>
+    </header>
+
+    <!-- Introduction -->
+    <section class="intro">
+        <div class="container">
+            <h2>Por Que Estudar a Escola de Frankfurt?</h2>
+            <p>A Escola de Frankfurt, fundada em 1923, representou uma revolução no pensamento crítico. Seus teóricos desenvolveram ferramentas conceituais que nos permitem compreender não apenas as estruturas econômicas do capitalismo, mas também suas dimensões psicológicas, culturais e ideológicas.</p>
+            <p>Este material apresenta os conceitos centrais que permitem entender como a dominação se mantém na sociedade moderna, por que as pessoas se submetem a sistemas opressivos, e como a arte e a cultura podem ser tanto instrumentos de controle quanto de libertação.</p>
         </div>
-        
-        <div class="material">
-            <h3>📄 Autoritarismo e Teoria Crítica</h3>
-            <p>Análise do autoritarismo na perspectiva frankfurtiana.</p>
-            <a href="autoritarismo_escola_frankfurt.pdf" class="btn" target="_blank">Abrir PDF</a>
-            <a href="autoritarismo_escola_frankfurt.pdf" class="btn" download>Download</a>
+    </section>
+
+    <!-- Main Content - Cards Grid -->
+    <main class="container">
+        <div class="cards-grid">
+            <!-- Card 1: Teoria Crítica -->
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3>Teoria Crítica</h3>
+                <p>A abordagem metodológica que diferencia a Escola de Frankfurt. Mais do que apenas descrever a sociedade, busca transformá-la através da análise das contradições do sistema capitalista.</p>
+                <div class="highlight">
+                    <strong>🔍 Características principais:</strong>
+                    <p>• Interdisciplinaridade: integra filosofia, sociologia, psicologia<br>
+                       • Ênfase na práxis: união entre teoria e prática transformadora<br>
+                       • Crítica à razão instrumental: denúncia do uso da razão apenas para dominação</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Razão Instrumental -->
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h3>Razão Instrumental</h3>
+                <p>Conceito desenvolvido por Horkheimer e Adorno para descrever a transformação da razão em mera ferramenta de cálculo e dominação, perdendo sua capacidade de questionar fins e valores.</p>
+                <div class="highlight">
+                    <strong>⚠️ Consequências:</strong>
+                    <p>• Desumanização das relações sociais<br>
+                       • Natureza vista apenas como recurso a ser explorado<br>
+                       • Cultura transformada em indústria de entretenimento<br>
+                       • Pensamento reduzido à eficiência técnica</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Indústria Cultural -->
+            <div class="card">
+                <div class="card-icon">🎭</div>
+                <h3>Indústria Cultural</h3>
+                <p>Talvez o conceito mais conhecido da Escola. Refere-se à transformação da cultura em mercadoria padronizada, produzida em massa para consumo passivo.</p>
+                <div class="highlight">
+                    <strong>🎯 Mecanismos de funcionamento:</strong>
+                    <p>• Padronização: fórmulas repetidas que anulam a criatividade<br>
+                       • Pseudo-individualização: ilusão de escolha dentro de opções pré-determinadas<br>
+                       • Adestramento para o consumo: cultura como treinamento para a vida no capitalismo<br>
+                       • Falsa reconciliação: promessas de felicidade que nunca se realizam</p>
+                </div>
+            </div>
+
+            <!-- Card 4: Personalidade Autoritária -->
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Personalidade Autoritária</h3>
+                <p>Estudo pioneiro de Adorno que identificou os traços psicológicos que predispõem indivíduos a aceitar e apoiar regimes autoritários.</p>
+                <div class="highlight">
+                    <strong>🔍 8 Traços principais (F-Scale):</strong>
+                    <p>1. Convencionalismo: adesão rígida a valores convencionais<br>
+                       2. Submissão autoritária: idealização das autoridades<br>
+                       3. Agressão autoritária: hostilidade contra desviantes<br>
+                       4. Anti-intelectualismo: desconfiança do pensamento crítico<br>
+                       5. Superstição e estereotipia<br>
+                       6. Preocupação com poder e dureza<br>
+                       7. Destrutividade e cinismo<br>
+                       8. Projeção: atribuir impulsos inaceitáveis a outros</p>
+                </div>
+            </div>
+
+            <!-- Card 5: Arte Autônoma -->
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Arte Autônoma como Resistência</h3>
+                <p>Para Adorno, a arte verdadeiramente autônoma representa um espaço de resistência à padronização da indústria cultural, mantendo um caráter crítico e não reconciliado com a realidade.</p>
+                <div class="highlight">
+                    <strong>✨ Obras exemplares:</strong>
+                    <p>• Música atonal de Schönberg: recusa da harmonia convencional<br>
+                       • Teatro épico de Brecht: efeito de estranhamento que impede identificação passiva<br>
+                       • Literatura de Kafka: representação do absurdo da burocracia moderna<br>
+                       • Arte abstrata: recusa da representação realista</p>
+                </div>
+            </div>
+
+            <!-- Card 6: Dialética do Esclarecimento -->
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Dialética do Esclarecimento</h3>
+                <p>Obra seminal de Horkheimer e Adorno que analisa como o projeto iluminista de libertação através da razão se transformou em seu oposto: novas formas de mitologia e dominação.</p>
+                <div class="highlight">
+                    <strong>🔄 Paradoxo central:</strong>
+                    <p>"O esclarecimento, entendido no sentido mais amplo de progresso do pensamento, tem sempre perseguido o objetivo de livrar os homens do medo e de investi-los na posição de senhores. Mas a terra totalmente esclarecida resplandece sob o signo de uma calamidade triunfal." (Horkheimer & Adorno)</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="material">
-            <h3>📘 Guia Pedagógico</h3>
-            <p>Orientações didáticas e atividades.</p>
-            <a href="guia_pedagogico_escola_frankfurt.pdf" class="btn" target="_blank">PDF</a>
-            <a href="guia_pedagogico_escola_frankfurt.docx" class="btn" download>Word</a>
+
+        <!-- Debate Section -->
+        <section class="debate">
+            <div class="container">
+                <h2>Perguntas para Debate e Reflexão</h2>
+                <div class="questions">
+                    <div class="question">
+                        <h4>🤔 A indústria cultural é mais sofisticada hoje do que na época de Adorno?</h4>
+                        <p>Como as plataformas digitais, algoritmos de recomendação e mídias sociais transformaram os mecanismos da indústria cultural? A "pseudo-individualização" se intensificou com a ilusão de escolhas personalizadas?</p>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>🎯 Podemos identificar traços da "personalidade autoritária" nas sociedades contemporâneas?</h4>
+                        <p>Quais manifestações atuais podem ser relacionadas aos 8 traços identificados por Adorno? Como isso se conecta com a ascensão de populismos e autoritarismos no século XXI?</p>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>💡 Existe ainda espaço para "arte autônoma" na era do entretenimento globalizado?</h4>
+                        <p>Que formas de arte contemporânea mantêm um caráter crítico e não reconciliado? Como artistas resistem à mercantilização total da cultura?</p>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>⚖️ A razão instrumental domina completamente nosso tempo?</h4>
+                        <p>Podemos identificar espaços de resistência à lógica do cálculo e da eficiência? Existem formas alternativas de racionalidade sendo desenvolvidas?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Escola de Frankfurt - Teoria Crítica</h3>
+                <p>Material didático desenvolvido para aulas de Sociologia</p>
+                <div class="footer-links">
+                    <a href="https://github.com/48cork/aulas-sociologia-frankfurtb">
+                        <i class="fab fa-github"></i> Repositório
+                    </a>
+                    <a href="mailto:seu-email@exemplo.com">
+                        <i class="fas fa-envelope"></i> Contato
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-book"></i> Referências
+                    </a>
+                </div>
+                <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">
+                    © 2024 Material Educacional - Para fins didáticos | Baseado nas obras de Adorno, Horkheimer, Marcuse, Fromm e Benjamin
+                </p>
+            </div>
         </div>
-        
-        <div class="note">
-            💡 <strong>Dica:</strong> Salve esta página nos favoritos do celular para acesso rápido.
-        </div>
-        
-        <p style="text-align: center; color: #95a5a6; margin-top: 40px;">
-            Disponibilizado pelo professor • Atualizado em <span id="date"></span>
-        </p>
-    </div>
-    
+    </footer>
+
     <script>
-        document.getElementById('date').textContent = 
-            new Date().toLocaleDateString('pt-BR');
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
